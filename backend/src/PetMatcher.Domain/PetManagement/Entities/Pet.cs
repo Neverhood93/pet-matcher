@@ -45,7 +45,7 @@ public class Pet: Entity<PetId>
         bool isVaccinated, 
         PetStatus status, 
         List<PaymentDetail> paymentDetails, 
-        DateTime createdOn)
+        DateTime createdOn) : base(id)
     {
         Id = id;
         Name = name;
