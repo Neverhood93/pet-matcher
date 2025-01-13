@@ -1,6 +1,8 @@
+using CSharpFunctionalExtensions;
+
 namespace PetMatcher.Domain.PetManagement.Ids;
 
-public sealed record PetId: IComparable<PetId>
+public sealed class PetId: ComparableValueObject
 {
     public Guid Value { get; }
     
@@ -13,8 +15,8 @@ public sealed record PetId: IComparable<PetId>
 
     public static PetId Empty() => new(Guid.Empty);
     
-    public int CompareTo(PetId? other)
+    protected override IEnumerable<IComparable> GetComparableEqualityComponents()
     {
-        return other == null ? 1 : Value.CompareTo(other.Value);
+        yield return Value;
     }
 }

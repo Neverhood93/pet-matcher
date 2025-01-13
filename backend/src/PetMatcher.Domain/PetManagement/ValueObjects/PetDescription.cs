@@ -2,7 +2,7 @@ using CSharpFunctionalExtensions;
 
 namespace PetMatcher.Domain.PetManagement.ValueObjects;
 
-public record PetDescription
+public class PetDescription: ComparableValueObject
 {
     public string Value { get; }
 
@@ -24,5 +24,10 @@ public record PetDescription
         return string.IsNullOrWhiteSpace(description) ? 
             Result.Failure("Description cannot be empty") :
             Result.Success();
+    }
+    
+    protected override IEnumerable<IComparable> GetComparableEqualityComponents()
+    {
+        yield return Value;
     }
 }

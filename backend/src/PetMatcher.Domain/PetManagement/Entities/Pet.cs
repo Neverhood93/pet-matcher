@@ -16,8 +16,7 @@ public class Pet: Entity<PetId>
     public PetColor Color { get; private set; }
     public PetHealthInfo HealthInfo { get; private set; }
     public PetAddress Address { get; private set; }
-    public double Weight { get; private set; }
-    public double Height { get; private set; }
+    public PetDimensions Dimensions { get; private set; }
     public PetOwnerPhoneNumber OwnerPhoneNumber { get; private set; }
     public bool IsCastrated { get; private set; }
     public DateTime BirthDate { get; private set; }
@@ -37,8 +36,7 @@ public class Pet: Entity<PetId>
         PetColor color, 
         PetHealthInfo healthInfo, 
         PetAddress address, 
-        double weight, 
-        double height,
+        PetDimensions dimensions,
         PetOwnerPhoneNumber ownerPhoneNumber, 
         bool isCastrated, 
         DateTime birthDate, 
@@ -55,8 +53,7 @@ public class Pet: Entity<PetId>
         Color = color;
         HealthInfo = healthInfo;
         Address = address;
-        Weight = weight;
-        Height = height;
+        Dimensions = dimensions;
         OwnerPhoneNumber = ownerPhoneNumber;
         IsCastrated = isCastrated;
         BirthDate = birthDate;

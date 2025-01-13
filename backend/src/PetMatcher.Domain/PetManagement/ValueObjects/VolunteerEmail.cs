@@ -3,7 +3,7 @@ using CSharpFunctionalExtensions;
 
 namespace PetMatcher.Domain.PetManagement.ValueObjects;
 
-public record VolunteerEmail
+public class VolunteerEmail: ComparableValueObject
 {
     private const string EMAIL_REGEX = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
     
@@ -27,5 +27,10 @@ public record VolunteerEmail
         return string.IsNullOrWhiteSpace(value) ? Result.Failure("Email cannot be empty") :
             !Regex.IsMatch(value, EMAIL_REGEX) ? Result.Failure("Email is not valid") :
             Result.Success();
+    }
+    
+    protected override IEnumerable<IComparable> GetComparableEqualityComponents()
+    {
+        yield return Value;
     }
 }
